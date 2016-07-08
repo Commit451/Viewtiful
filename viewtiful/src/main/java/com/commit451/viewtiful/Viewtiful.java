@@ -14,6 +14,13 @@ public class Viewtiful {
 
     private static float xdpi = Float.MIN_VALUE;
 
+    /**
+     * Converts dp to px
+     *
+     * @param context context
+     * @param dp      the dp amount
+     * @return the amount in pixels
+     */
     public static int dpToPx(Context context, int dp) {
         if (xdpi == Float.MIN_VALUE) {
             xdpi = context.getResources().getDisplayMetrics().xdpi;
@@ -33,6 +40,46 @@ public class Viewtiful {
         } else {
             view.setBackground(drawable);
         }
+    }
+
+    /**
+     * Sets just the top padding on a view
+     *
+     * @param view    the view
+     * @param padding the padding in pixels
+     */
+    public static void setPaddingTop(View view, int padding) {
+        view.setPadding(view.getPaddingLeft(), padding, view.getPaddingRight(), view.getPaddingBottom());
+    }
+
+    /**
+     * Sets just the bottom padding on a view
+     *
+     * @param view    the view
+     * @param padding the padding in pixels
+     */
+    public static void setPaddingBottom(View view, int padding) {
+        view.setPadding(view.getPaddingLeft(), view.getPaddingTop(), view.getPaddingRight(), padding);
+    }
+
+    /**
+     * Sets just the left padding on a view
+     *
+     * @param view    the view
+     * @param padding the padding in pixels
+     */
+    public static void setPaddingLeft(View view, int padding) {
+        view.setPadding(padding, view.getPaddingTop(), view.getPaddingRight(), view.getPaddingBottom());
+    }
+
+    /**
+     * Sets just the right padding on a view
+     *
+     * @param view    the view
+     * @param padding the padding in pixels
+     */
+    public static void setPaddingRight(View view, int padding) {
+        view.setPadding(view.getPaddingLeft(), view.getPaddingTop(), padding, view.getPaddingBottom());
     }
 
     /**
