@@ -30,5 +30,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("Hello", "The view has been laid out. Also exciting!");
             }
         });
+        Toast.makeText(this, "Nav on bottom? " + Viewtiful.isNavBarOnBottom(this), Toast.LENGTH_SHORT).show();
     }
 }

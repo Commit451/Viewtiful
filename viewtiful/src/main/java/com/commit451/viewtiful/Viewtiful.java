@@ -1,14 +1,17 @@
 package com.commit451.viewtiful;
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
 /**
- * Helper class which helps with View functions
+ * Helper class which helps with {@link View} functions
  */
 public class Viewtiful {
 
@@ -118,5 +121,20 @@ public class Viewtiful {
                 runnable.run();
             }
         });
+    }
+
+    /**
+     * Determine if the navigation bar will be on the bottom of the screen, based on logic in
+     * PhoneWindowManager.
+     * @return true if it is on bottom, false if not
+     * @see <a href=https://github.com/nickbutcher/plaid/blob/master/app/src/main/java/io/plaidapp/util/ViewUtils.java>https://github.com/nickbutcher/plaid/blob/master/app/src/main/java/io/plaidapp/util/ViewUtils.java</a>
+     */
+    public static boolean isNavigationBarOnBottom(@NonNull Context context) {
+        final Resources res= context.getResources();
+        final Configuration cfg = context.getResources().getConfiguration();
+        final DisplayMetrics dm =res.getDisplayMetrics();
+        boolean canMove = (dm.widthPixels != dm.heightPixels &&
+                cfg.smallestScreenWidthDp < 600);
+        return(!canMove || dm.widthPixels < dm.heightPixels);
     }
 }
