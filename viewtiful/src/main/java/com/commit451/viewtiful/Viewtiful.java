@@ -12,6 +12,7 @@ import android.view.ViewTreeObserver;
 
 /**
  * Helper class which helps with {@link View} functions
+ * @see <a href=https://en.wikipedia.org/wiki/Viewtiful_Joe>https://en.wikipedia.org/wiki/Viewtiful_Joe</a>
  */
 public class Viewtiful {
 
