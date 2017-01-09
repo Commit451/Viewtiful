@@ -1,8 +1,10 @@
 package com.commit451.viewtiful.sample;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,5 +33,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Toast.makeText(this, "Nav on bottom? " + Viewtiful.isNavigationBarOnBottom(this), Toast.LENGTH_SHORT).show();
+        findViewById(R.id.kotlin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MainKotlinActivity.class));
+            }
+        });
     }
 }

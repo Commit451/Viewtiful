@@ -1,1 +1,1 @@
-include ':app', ':viewtiful'
+include ':app', ':viewtiful', ':viewtiful-kotlin'

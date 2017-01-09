@@ -1,8 +1,9 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    buildToolsVersion "25.0.2"
 
     defaultConfig {
         applicationId "com.commit451.viewtiful.sample"
@@ -20,11 +21,15 @@ android {
     lintOptions {
         abortOnError false
     }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:appcompat-v7:25.1.0'
     compile project(':viewtiful')
+    compile project(':viewtiful-kotlin')
 }
