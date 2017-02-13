@@ -5,10 +5,10 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
-
-import com.commit451.viewtiful.Viewtiful
 import com.commit451.viewtiful.kotlin.onGlobalLayout
 import com.commit451.viewtiful.kotlin.onViewPreDraw
+import com.commit451.viewtiful.kotlin.setPaddingTop
+import com.commit451.viewtiful.kotlin.topMargin
 
 class MainKotlinActivity : AppCompatActivity() {
 
@@ -24,6 +24,7 @@ class MainKotlinActivity : AppCompatActivity() {
         view.onGlobalLayout(Runnable {
             Log.d("Hello", "The view has been laid out. Also exciting!")
         })
-        Toast.makeText(this, "Nav on bottom? " + Viewtiful.isNavigationBarOnBottom(this), Toast.LENGTH_SHORT).show()
+        view.setPaddingTop(10)
+        view.topMargin(10)
     }
 }
