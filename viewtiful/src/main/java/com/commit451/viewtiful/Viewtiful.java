@@ -6,12 +6,14 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.Px;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
 /**
  * Helper class which helps with {@link View} functions
+ *
  * @see <a href=https://en.wikipedia.org/wiki/Viewtiful_Joe>https://en.wikipedia.org/wiki/Viewtiful_Joe</a>
  */
 public class Viewtiful {
@@ -25,6 +27,7 @@ public class Viewtiful {
      * @param dp      the dp amount
      * @return the amount in pixels
      */
+    @Px
     public static int dpToPx(Context context, int dp) {
         if (xdpi == Float.MIN_VALUE) {
             xdpi = context.getResources().getDisplayMetrics().xdpi;
@@ -52,7 +55,7 @@ public class Viewtiful {
      * @param view    the view
      * @param padding the padding in pixels
      */
-    public static void setPaddingTop(View view, int padding) {
+    public static void setPaddingTop(View view, @Px int padding) {
         view.setPadding(view.getPaddingLeft(), padding, view.getPaddingRight(), view.getPaddingBottom());
     }
 
@@ -62,7 +65,7 @@ public class Viewtiful {
      * @param view    the view
      * @param padding the padding in pixels
      */
-    public static void setPaddingBottom(View view, int padding) {
+    public static void setPaddingBottom(View view, @Px int padding) {
         view.setPadding(view.getPaddingLeft(), view.getPaddingTop(), view.getPaddingRight(), padding);
     }
 
@@ -72,7 +75,7 @@ public class Viewtiful {
      * @param view    the view
      * @param padding the padding in pixels
      */
-    public static void setPaddingLeft(View view, int padding) {
+    public static void setPaddingLeft(View view, @Px int padding) {
         view.setPadding(padding, view.getPaddingTop(), view.getPaddingRight(), view.getPaddingBottom());
     }
 
@@ -82,8 +85,18 @@ public class Viewtiful {
      * @param view    the view
      * @param padding the padding in pixels
      */
-    public static void setPaddingRight(View view, int padding) {
+    public static void setPaddingRight(View view, @Px int padding) {
         view.setPadding(view.getPaddingLeft(), view.getPaddingTop(), padding, view.getPaddingBottom());
+    }
+
+    /**
+     * Set the top, bottom, left, and right padding all at once
+     *
+     * @param view    the view
+     * @param padding the padding in pixels
+     */
+    public static void setPadding(View view, @Px int padding) {
+        view.setPadding(padding, padding, padding, padding);
     }
 
     /**
@@ -127,15 +140,16 @@ public class Viewtiful {
     /**
      * Determine if the navigation bar will be on the bottom of the screen, based on logic in
      * PhoneWindowManager.
+     *
      * @return true if it is on bottom, false if not
      * @see <a href=https://github.com/nickbutcher/plaid/blob/master/app/src/main/java/io/plaidapp/util/ViewUtils.java>https://github.com/nickbutcher/plaid/blob/master/app/src/main/java/io/plaidapp/util/ViewUtils.java</a>
      */
     public static boolean isNavigationBarOnBottom(@NonNull Context context) {
-        final Resources res= context.getResources();
+        final Resources res = context.getResources();
         final Configuration cfg = context.getResources().getConfiguration();
-        final DisplayMetrics dm =res.getDisplayMetrics();
+        final DisplayMetrics dm = res.getDisplayMetrics();
         boolean canMove = (dm.widthPixels != dm.heightPixels &&
                 cfg.smallestScreenWidthDp < 600);
-        return(!canMove || dm.widthPixels < dm.heightPixels);
+        return (!canMove || dm.widthPixels < dm.heightPixels);
     }
 }
